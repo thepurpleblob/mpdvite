@@ -33,4 +33,9 @@
     main img {
         max-width: 100%;
     }
+
+    iframe {
+        aspect-ratio: 16 / 9;
+        width: 100% !important;
+    }
 </style>
