@@ -1,5 +1,5 @@
 <template>
-    <div id="dieselheader" class="mt-2">
+    <div id="dieselheader" class="">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <router-link class="navbar-brand" to="/">
