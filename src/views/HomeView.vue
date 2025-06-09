@@ -17,7 +17,7 @@
     onMounted(() => {
         const endpoint = import.meta.env.VITE_APP_ENDPOINT;
 
-        axios.get(endpoint + '/frontpage')
+        axios.get(endpoint + '/items/frontpage')
         .then(response => {
             const data = response.data.data;
             preamble.value = data.preamble;

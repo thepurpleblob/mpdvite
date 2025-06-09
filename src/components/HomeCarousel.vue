@@ -4,9 +4,9 @@
         <Slide v-for="image in images" :key="image.id">
             <div class="carousel__item">
                 <div class="card">
-                    <img class="card-img" :src="assets + '/' + image.image" :alt="image.alttext">
-                    <div v-if="image.visibletext" class="card-body">
-                        <h4 class="card-title text-center" v-html="image.visibletext"></h4>
+                    <img class="card-img" :src="assets + '/' + image.filename_disk" :alt="image.description">
+                    <div v-if="image.description" class="card-body">
+                        <h4 class="card-title text-center" v-html="image.description"></h4>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
     import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
     const images = ref([]);
-    const assets = import.meta.env.VITE_ASSETS;
+    const assets = import.meta.env.VITE_APP_ENDPOINT + '/assets';
 
     const carouselConfig = {
         itemsToShow: 1,
@@ -39,12 +39,23 @@
     onMounted(() => {
         const endpoint = import.meta.env.VITE_APP_ENDPOINT;
         const filter = {
-            status: {
-                _eq: 'published',
+            name: {
+                _eq: 'Carousel',
             }
         };
 
-        axios.get(endpoint + '/carousel?filter=' + JSON.stringify(filter))
+        axios.get(endpoint + '/folders?filter=' + JSON.stringify(filter))
+        .then(response => {
+            const folder = response.data.data[0];
+            const folderid = folder.id;
+            const folderfilter = {
+                folder: {
+                    _eq: folderid,
+                }
+            };
+
+            return axios.get(endpoint + '/files?filter=' + JSON.stringify(folderfilter))
+        })
         .then(response => {
             const data = response.data.data;
             images.value = data;

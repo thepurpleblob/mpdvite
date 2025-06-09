@@ -24,3 +24,22 @@ services:
             WEBSOCKETS_ENABLED: "true"
             CORS_ENABLED: "true"
             CORS_ORIGIN: "*"
+    directus2:
+        image: directus/directus:11
+        ports:
+            - 8059:8055
+        restart: always
+        volumes:
+            - ./database2:/directus/database
+            - ./uploads2:/directus/uploads
+            - ./extensions2:/directus/extensions
+        environment:
+            SECRET: "XT&|A~1)9!V8.R+:o#C:&ZB[hT0&J;F"
+            ADMIN_EMAIL: "admin@example.com"
+            ADMIN_PASSWORD: "purple"
+            DB_CLIENT: "sqlite3"
+            DB_FILENAME: "/directus/database/database.sqlite"
+            WEBSOCKETS_ENABLED: "true"
+            CORS_ENABLED: "true"
+            CORS_ORIGIN: "*"
+            SESSION_COOKIE_NAME: "srpsmpd2"
