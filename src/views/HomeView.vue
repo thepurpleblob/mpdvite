@@ -2,6 +2,7 @@
     <main>
         <div class="text-center my-4" v-html="preamble"></div>
         <HomeCarousel></HomeCarousel>
+        <div v-html="youtube"></div>
         <div v-html="content"></div>
     </main>
 </template>
@@ -13,6 +14,7 @@
 
     const preamble = ref('');
     const content = ref('');
+    const youtube = ref('');
 
     onMounted(() => {
         const endpoint = import.meta.env.VITE_APP_ENDPOINT;
@@ -22,6 +24,7 @@
             const data = response.data.data;
             preamble.value = data.preamble;
             content.value = data.content;
+            youtube.value = data.youtube;
         })
         .catch(error => {
             window.console.error(error);
@@ -37,5 +40,6 @@
     iframe {
         aspect-ratio: 16 / 9;
         width: 100% !important;
+        height: auto !important;
     }
 </style>
