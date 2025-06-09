@@ -19,8 +19,12 @@ services:
             SECRET: "T&|A~1)9!V8.R+:o#C:&ZB[hT0&J;F"
             ADMIN_EMAIL: "admin@example.com"
             ADMIN_PASSWORD: "purple"
-            DB_CLIENT: "sqlite3"
-            DB_FILENAME: "/directus/database/database.sqlite"
+            DB_CLIENT: "mysql"
+            DB_HOST: "mysql"
+            DB_PORT: "3306"
+            DB_DATABASE: "directus"
+            DB_USER: "root"
+            DB_PASSWORD: "purple"
             WEBSOCKETS_ENABLED: "true"
             CORS_ENABLED: "true"
             CORS_ORIGIN: "*"
@@ -37,9 +41,21 @@ services:
             SECRET: "XT&|A~1)9!V8.R+:o#C:&ZB[hT0&J;F"
             ADMIN_EMAIL: "admin@example.com"
             ADMIN_PASSWORD: "purple"
-            DB_CLIENT: "sqlite3"
             DB_FILENAME: "/directus/database/database.sqlite"
             WEBSOCKETS_ENABLED: "true"
             CORS_ENABLED: "true"
             CORS_ORIGIN: "*"
             SESSION_COOKIE_NAME: "srpsmpd2"
+    mysql:
+        image: mariadb:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: 'purple'
+            MYSQL_USER: 'directususer'
+            MYSQL_PASSWORD: 'purple'
+            MYSQL_DATABASE: 'directus'
+        restart: always
+        volumes:
+            - mysqldata:/var/lib/mysql
+        ports:
+            - 3310:3306
+
