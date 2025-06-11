@@ -6,7 +6,7 @@
     <div v-if="locos">
         <div class="row my-5">
             <div v-for="loco in locos"class="col-12 col-md-4 gy-1">
-                <div  class="card text-center py-1">
+                <div  class="card text-center py-1 px-md-1">
                         <div class="card-img-top">
                             <FolderImage :folder="loco.imagefolder"></FolderImage>
                         </div>
@@ -35,7 +35,7 @@
                 _eq: 'published'
             }
         };
-        axios.get(endpoint + '/items/locos?filter' + JSON.stringify(published))
+        axios.get(endpoint + '/items/locos?filter' + JSON.stringify(published) + '&sort=-intraffic')
         .then(result => {
             const data = result.data.data;
             locos.value = data;
