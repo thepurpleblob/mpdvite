@@ -13,11 +13,11 @@
                         <li class="nav-item border-bottom border-3 ms-3" :class="{'border-primary': isActive('/')}">
                             <router-link @click="openclosenav()" class="nav-link px-0" aria-current="page" to="/">Home</router-link>
                         </li>
-                        <li class="nav-item border-bottom border-3 ms-3" :class="{'border-primary': isActive('/events')}">
-                            <router-link @click="openclosenav()" class="nav-link px-0" to="/events">Events</router-link>
-                        </li>
                         <li class="nav-item border-bottom border-3 ms-3" :class="{'border-primary': isActive('/locos')}">
                             <router-link @click="openclosenav()" class="nav-link px-0" to="/locos">Locos</router-link>
+                        </li>
+                        <li class="nav-item border-bottom border-3 ms-3" :class="{'border-primary': isActive('/events')}">
+                            <router-link @click="openclosenav()" class="nav-link px-0" to="/events">Events</router-link>
                         </li>
                         <li class="nav-item border-bottom border-3 ms-3" :class="{'border-primary': isActive('/videos')}">
                             <router-link @click="openclosenav()" class="nav-link px-0" to="/videos">Videos</router-link>
