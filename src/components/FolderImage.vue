@@ -24,7 +24,6 @@
 
         axios.get(endpoint + '/files?limit=1&filter=' + JSON.stringify(folderfilter))
         .then(result => {
-            window.console.log(result);
             const data = result.data.data;
             image.value = data[0];
         })
