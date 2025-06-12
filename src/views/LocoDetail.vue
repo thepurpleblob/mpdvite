@@ -2,6 +2,7 @@
     <div class="pt-2">
         <h2 class="text-center">{{ loco.title }}</h2>
         <CarouselImages :images="images"></CarouselImages>
+        <div v-html="loco.content" class="my-3"></div>
     </div>
 </template>
 
