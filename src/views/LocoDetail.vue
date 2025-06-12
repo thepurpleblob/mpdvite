@@ -2,6 +2,7 @@
     <div class="pt-2">
         <h2 class="text-center">{{ loco.title }}</h2>
         <CarouselImages :images="images"></CarouselImages>
+        <div v-html="loco.video" class="my-2"></div>
         <div v-html="loco.content" class="my-3"></div>
     </div>
 </template>
@@ -44,3 +45,15 @@
 
     });
 </script>
+
+<style>
+    main img {
+        max-width: 100%;
+    }
+
+    iframe {
+        aspect-ratio: 16 / 9;
+        width: 100% !important;
+        height: auto !important;
+    }
+</style>
