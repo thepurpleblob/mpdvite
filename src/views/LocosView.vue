@@ -13,6 +13,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ loco.title }}</h5>
                             <p class="card-text" v-html="loco.shortinfo"></p>
+                            <a :href="'/locodetail/' + loco.id" class="btn btn-primary">More info...</a>
                         </div>
                 </div>
             </div>
